@@ -4,6 +4,9 @@ from env import get_db_url
 
 
 def get_zillow_data():
+    '''
+    Acquires zillow dataframe based on SQL query found below
+    '''
     filename = 'zillow_data.csv'
 
     if os.path.isfile(filename):
