@@ -56,7 +56,7 @@ def wrangle_zillow():
 def wrangle_zillow_quality():
     '''
     Acquires and prepares zillow data for exploration and modeling LEAVING QUALITY as a feature.
-    Function Actions: Pulls Data -> Drops Nulls -> Converts datatypes to int (where possible) -> eliminates odd values
+    Function Actions: Pulls Data -> Drops Nulls -> Converts datatypes to int (where possible) -> eliminates odd values 
     '''
     # Pull data using an acquire function
     df = get_zillow_data()
@@ -88,6 +88,11 @@ def wrangle_zillow_quality():
     return df
 
 def scale_zillow(df_train,df_validate,df_test):
+    '''
+    Scales zillow dataframe using min-max scaler.
+    Also creates dummy variables for categorical variable, location ('fips_name')
+    Must input split dataframe!
+    '''
     # Create the object
     scaler = sklearn.preprocessing.MinMaxScaler()
     scaler.fit(df_train.drop(columns=['fips_name','selling_price']))
